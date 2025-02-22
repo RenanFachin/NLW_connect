@@ -1,10 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  // resetando as cores padrões
   --color-*: initial;
 
-  // Definindo apenas as do meu projeto
   --color-blue: #6F9DE2;
   --color-purple: #9871F3;
 
