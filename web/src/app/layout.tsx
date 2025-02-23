@@ -1,19 +1,21 @@
-import './globals.css'
+import "./globals.css";
+import { montserrat, oxanium } from "@/utils/custom-fonts";
 import type { Metadata } from "next";
-import { oxanium, montserrat } from '@/utils/custom-fonts';
 
 export const metadata: Metadata = {
-  title: "DEVSTAGE",
+	title: "DEVSTAGE",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" className={`${oxanium.variable} ${montserrat.variable}`}>
-      <body className='bg-gray-900 text-gray-100 antialiased'>{children}</body>
-    </html>
-  );
+	return (
+		<html lang="en" className={`${oxanium.variable} ${montserrat.variable}`}>
+			<body className="bg-gray-900 text-gray-100 antialiased bg-[url(/background.png)] bg-no-repeat bg-top md:bg-right-top">
+				{children}
+			</body>
+		</html>
+	);
 }
