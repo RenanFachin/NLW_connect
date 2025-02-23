@@ -4,8 +4,17 @@ import { InviteInput } from "./components/invite-input";
 import { Ranking } from "./components/ranking";
 import { Stats } from "./components/stats";
 
-export default function InvitePage() {
-	const inviteLink = "devstage.com/codecraft-summit-2025/1234";
+interface InvitePageProps {
+	params: Promise<{
+		subscriberId: string;
+	}>;
+}
+
+export default async function InvitePage({ params }: InvitePageProps) {
+	// obtendo o parâmetro da rota
+	const { subscriberId } = await params;
+
+	const inviteLink = `http://localhost:3333/invites/${subscriberId}`;
 
 	return (
 		<div className="min-h-dvh flex items-center justify-between gap-16 flex-col md:flex-row">
