@@ -1,7 +1,7 @@
 import Image from "next/image";
-import MEDAL_COOPER from "../../../assets/medal-cooper.svg";
-import MEDAL_GOLD from "../../../assets/medal-gold.svg";
-import MEDAL_SILVER from "../../../assets/medal-silver.svg";
+import MEDAL_COOPER from "../../../../assets/medal-cooper.svg";
+import MEDAL_GOLD from "../../../../assets/medal-gold.svg";
+import MEDAL_SILVER from "../../../../assets/medal-silver.svg";
 
 export function Ranking() {
 	return (
