@@ -12,12 +12,18 @@ const subscriptionSchema = z.object({
 	email: z.string().email("Digite um e-mail válido"),
 });
 
+type SubscriptionSchema = z.infer<typeof subscriptionSchema>;
+
 export function SubscriptionForm() {
-	const { register, handleSubmit } = useForm({
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<SubscriptionSchema>({
 		resolver: zodResolver(subscriptionSchema),
 	});
 
-	function onSubscribe(data: any) {
+	function onSubscribe(data: SubscriptionSchema) {
 		console.log(data);
 	}
 
@@ -31,29 +37,45 @@ export function SubscriptionForm() {
 			</h2>
 
 			<div className="space-y-3">
-				<InputRoot>
-					<InputIcon>
-						<User />
-					</InputIcon>
+				<div className="space-y-2">
+					<InputRoot>
+						<InputIcon>
+							<User />
+						</InputIcon>
 
-					<InputField
-						type="text"
-						placeholder="Nome completo"
-						{...register("name")}
-					/>
-				</InputRoot>
+						<InputField
+							type="text"
+							placeholder="Nome completo"
+							{...register("name")}
+						/>
+					</InputRoot>
 
-				<InputRoot>
-					<InputIcon>
-						<Mail />
-					</InputIcon>
+					{errors.name && (
+						<p className="text-danger text-xs font-semibold">
+							{errors.name.message}
+						</p>
+					)}
+				</div>
 
-					<InputField
-						type="email"
-						placeholder="E-mail"
-						{...register("email")}
-					/>
-				</InputRoot>
+				<div className="space-y-2">
+					<InputRoot>
+						<InputIcon>
+							<Mail />
+						</InputIcon>
+
+						<InputField
+							type="email"
+							placeholder="E-mail"
+							{...register("email")}
+						/>
+					</InputRoot>
+
+					{errors.email && (
+						<p className="text-danger text-xs font-semibold">
+							{errors.email.message}
+						</p>
+					)}
+				</div>
 			</div>
 
 			<Button type="submit">
