@@ -5,6 +5,7 @@ import { Ranking } from "./components/ranking";
 import { Stats } from "./components/stats";
 
 interface InvitePageProps {
+	// APENAS os arquivos page.tsx tem acesso à esta propriedade
 	params: Promise<{
 		subscriberId: string;
 	}>;
@@ -46,7 +47,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
 
 					<InviteInput inviteLink={inviteLink} />
 
-					<Stats />
+					<Stats subscriberId={subscriberId} />
 				</div>
 			</div>
 
